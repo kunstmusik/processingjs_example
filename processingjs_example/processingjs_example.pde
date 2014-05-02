@@ -70,15 +70,6 @@ void setup() {
   t.radius = 10;
 }
 
-void computeNextStep(int sketch_width, int sketch_height, float frame_rate) {
-  if(t.active && t.radius < 10) {
-     t.radius++; 
-  } else if(!t.active && t.radius > 0) {
-     t.radius--; 
-  }
-}
-
-
 void draw() {
   t.update();
   background(#000000);
