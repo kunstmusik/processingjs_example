@@ -30,7 +30,19 @@ class TouchPoint {
     }
 }
 
+class Preloader {
+   String loadingText = "Loading Csound...";
+   
+   void draw() {
+      fill(#ffffff);
+      textSize(18);
+      text(loadingText, width/2 - textWidth(loadingText)/2, 
+          height/2 - 9);
+   } 
+}
+
 TouchPoint t = new TouchPoint();
+Preloader p = new Preloader();
 
 void mousePressed() {
    t.active = true; 
@@ -67,11 +79,17 @@ void setup() {
   
   t.x = 20;
   t.y = 20;
-  t.radius = 10;
+  t.radius = 0;
 }
 
 void draw() {
   t.update();
   background(#000000);
-  t.draw();
+  
+  if(csound == null) {
+     p.draw(); 
+  } else {
+     t.draw();
+  }
+  
 }
